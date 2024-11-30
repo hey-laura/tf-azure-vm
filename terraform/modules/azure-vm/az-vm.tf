@@ -88,12 +88,14 @@ resource "tls_private_key" "ssh" {
     depends_on = [azurerm_resource_group.rg]
 }
 
+# Save SSH key to file
 resource "local_file" "private_key" {
     filename = "./id_rsa"
     file_permission = "400"
     content  = tls_private_key.ssh.private_key_pem
 }
 
+# Save SSH public key to file
 resource "local_file" "public_key" {
     filename = "./id_rsa.pub"
     content  = tls_private_key.ssh.public_key_openssh
