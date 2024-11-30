@@ -85,6 +85,12 @@ SSH into the VM: Use the private SSH key to connect to the VM:
 ssh -i id_rsa azureuser@<public-ip>
 ```
 
+### 6. Destroy the Deployment
+To remove all resources created by Terraform:
+
+```bash
+terraform destroy
+```
 
 ### Instance Example
 
@@ -102,11 +108,12 @@ module "azure_vm" {
 
 ### Outputs
 
-| Name          | Description                                   |
-|---------------|-----------------------------------------------|
-| `vm_ids`      | List of IDs of the created Virtual Machines. |
-| `vm_names`    | List of names of the created Virtual Machines.|
-| `public_ips`  | List of public IP addresses.    |
+| Name                      | Description                                     |
+|---------------------------|-------------------------------------------------|
+| `vm_ids`                  | List of IDs of the created Virtual Machines.    |
+| `vm_names`                | List of names of the created Virtual Machines.  |
+| `public_ips`              | List of public IP addresses.                    |
+| `current_subscription_id` | Show current subscription ID.                   |
 
 ---
 
