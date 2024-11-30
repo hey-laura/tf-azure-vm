@@ -114,7 +114,7 @@ resource "azurerm_linux_virtual_machine" "vm" {
         public_key                  = tls_private_key.ssh.public_key_openssh
     }
     network_interface_ids           = [azurerm_network_interface.nic[count.index].id]
-    computer_name                   = "${var.environment}-vm"
+    computer_name                   = "${var.environment}-vm-${count.index + 1}"
     os_disk {
         caching                     = "ReadWrite"
         storage_account_type        = "Standard_LRS"

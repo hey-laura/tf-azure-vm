@@ -1,17 +1,17 @@
 # Define the outputs for the Azure VM module
-output "current_subscription_display_name" {
-  value = data.azurerm_subscription.current.display_name
+output "current_subscription_id" {
+    value = data.azurerm_subscription.current.id
 }
 
 output "vm_ids" {
-    value = azurerm_linux_virtual_machine.vm[*].id
+    value = [for vm in azurerm_linux_virtual_machine.vm : vm.id]
 }
 
 output "vm_names" {
-    value = azurerm_linux_virtual_machine.vm[*].name
+    value = [for vm in azurerm_linux_virtual_machine.vm : vm.name]  
 }
 
 output "public_ips" {
-    value = azurerm_linux_virtual_machine.vm[*].public_ip_address
+    value = [for ip in azurerm_public_ip.public_ip : ip.ip_address]
 }
 
