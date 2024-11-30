@@ -20,33 +20,85 @@ This Terraform module simplifies the deployment of one or more Azure Virtual Mac
 
 ## Usage
 
-### Example
+```
+tree
+.
+├── README.md
+└── terraform
+    ├── modules
+    │   └── azure-vm
+    │       ├── az-vm.tf
+    │       ├── outputs.tf
+    │       └── variables.tf
+    └── sites
+        └── eastus
+            ├── main.tf
+            └── versions.tf
+
+6 directories, 6 files
+```
+
+### 1. Configure the Environment
+Set the Azure Subscription ID: Terraform requires the Azure subscription ID to authenticate. Export it as an environment variable:
+
+```bash
+export ARM_SUBSCRIPTION_ID="your-subscription-id"
+```
+Log in using the Azure CLI:
+   ```bash
+   az login
+   ```
+
+### 2. Initialize Terraform
+Navigate to the site-specific directory (e.g., eastus):
+
+```bash
+cd terraform/sites/eastus
+terraform init
+```
+
+### 3. Plan the Deployment
+Generate an execution plan to preview the resources Terraform will create:
+
+```bash
+terraform plan
+```
+
+### 4. Apply the Configuration
+Deploy the infrastructure:
+
+```bash
+terraform apply
+```
+
+Terraform will prompt for confirmation before creating the resources. Type **yes** to proceed.
+
+### 5. Verify the Deployment
+Get Outputs: After applying, view the outputs (e.g., VM names, public IPs):
+
+```bash
+terraform output
+```
+SSH into the VM: Use the private SSH key to connect to the VM:
+
+```bash
+ssh -i id_rsa azureuser@<public-ip>
+```
+
+
+### Instance Example
 
 ```
 module "azure_vm" {
   source              = "./modules/azure-vm"
   environment         = "dev"
-  region              = "eastus"
-  vm_count            = 3
+  location            = "eastus"
+  vm_count            = 2
   admin_username      = "azureuser"
   vm_size             = "Standard_B1s"
   resource_group_name = "example-rg"
 }
 ```
-
----
-### Inputs
-
-| Name                  | Description                                  | Type   | Default       | Required |
-|-----------------------|----------------------------------------------|--------|---------------|----------|
-| `location`            | Azure location (e.g., `eastus`, `westus`)   | string | N/A            | Yes      |
-| `environment`         | Environment name (e.g., `dev`, `prod`).     | string | N/A            | Yes      |
-| `resource_group_name` | Name of the resource group.                 | string | `rg-azure-vm`  | No       |
-| `vm_count`            | Number of VMs to create.                    | number | `1`            | No       |
-| `admin_username`      | Admin username for the VM.                  | string | `azureuser`    | No       |
-| `vm_size`             | Size of the Virtual Machine.                | string | `Standard_B1s` | No       |
-
----
 
 ### Outputs
 
@@ -54,23 +106,9 @@ module "azure_vm" {
 |---------------|-----------------------------------------------|
 | `vm_ids`      | List of IDs of the created Virtual Machines. |
 | `vm_names`    | List of names of the created Virtual Machines.|
-| `public_ips`  | List of public IP addresses (if enabled).    |
+| `public_ips`  | List of public IP addresses.    |
 
 ---
-
-## Prerequisites
-
-1. **Set the Azure Subscription ID**:
-   The module requires the Azure subscription ID to be set as an environment variable. Run the following command before applying the configuration:
-   ```bash
-   export ARM_SUBSCRIPTION_ID="your-subscription-id"
-   ```
-
-2. **Azure Authentication**:
-   Log in using the Azure CLI:
-   ```bash
-   az login
-   ```
 
 ## Azure Linux VM Sizes with Pricing (East US Region)
 
@@ -90,8 +128,7 @@ For current sizes and pricing visit the [Azure Instances Size documentation](htt
 |                  | L8s               | 8         | 64               | $0.752                   |
 | **M-Series**     | M8ms              | 8         | 218              | $1.872                   |
 |                  | M16ms             | 16        | 433              | $3.744                   |
-
-## Key Considerations
+---
 
 - **Pricing Variability**: The prices listed above are indicative for the **East US** region and are subject to change. Prices may vary based on Azure region, subscription type, and other factors. Always check the [Azure Pricing Calculator](https://azure.microsoft.com/en-us/pricing/calculator/) for the latest details.
 

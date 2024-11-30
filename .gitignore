@@ -1,0 +1,9 @@
+# ignore id_rsa and id_rsa.pub files
+id_rsa
+id_rsa.pub
+
+# ignore terraform files
+.terraform
+.terraform.lock.hcl
+terraform.tfstate
+terraform.tfstate.backup
