@@ -22,7 +22,6 @@ This Terraform module simplifies the deployment of one or more Azure Virtual Mac
 
 ```
 tree
-.
 ├── README.md
 └── terraform
     ├── modules
@@ -33,9 +32,10 @@ tree
     └── sites
         └── eastus
             ├── main.tf
+            ├── outputs.tf
             └── versions.tf
 
-6 directories, 6 files
+6 directories, 7 files
 ```
 
 ### 1. Configure the Environment
