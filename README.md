@@ -130,20 +130,6 @@ For current sizes and pricing visit the [Azure Instances Size documentation](htt
 |                  | M16ms             | 16        | 433              | $3.744                   |
 ---
 
-- **Pricing Variability**: The prices listed above are indicative for the **East US** region and are subject to change. Prices may vary based on Azure region, subscription type, and other factors. Always check the [Azure Pricing Calculator](https://azure.microsoft.com/en-us/pricing/calculator/) for the latest details.
-
-- **Operating System Costs**: These prices apply to Linux VMs. Windows VMs may have additional licensing fees. For detailed Windows VM pricing, see the [Azure Windows VM Pricing](https://azure.microsoft.com/en-us/pricing/details/virtual-machines/windows/).
-
-- **Billing Options**:
-  - **Pay-As-You-Go**: Flexible billing based on actual usage, ideal for unpredictable workloads.
-  - **Reserved Instances**: Commit to one- or three-year terms for significant discounts, suitable for stable, long-term workloads.
-  - **Spot Instances**: Access unused capacity at reduced rates, with the risk of eviction when Azure needs capacity.
-
-- **Additional Costs**: Be aware of extra charges for storage, networking, and other associated resources.
-
-For the most accurate and up-to-date pricing, visit the [Azure Pricing Calculator](https://azure.microsoft.com/en-us/pricing/calculator/).
-
-
 ## License
 
 This module is open-source and available under the MIT License.
