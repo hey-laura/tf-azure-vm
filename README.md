@@ -3,8 +3,6 @@
 
 This Terraform module simplifies the deployment of one or more Azure Virtual Machines (VMs) within a specified Azure location. It supports flexible configurations, dynamic resource creation, and secure SSH authentication.
 
----
-
 ## Features
 
 - Deploys one or more Azure Linux Virtual Machines.
@@ -13,15 +11,12 @@ This Terraform module simplifies the deployment of one or more Azure Virtual Mac
 - Automatically attaches a public IP to each VM.
 - Enforces secure SSH key-based authentication.
 
----
-
 ## Requirements
 
 - **Terraform**: v1.5.0 or later
+- **Azure CLI**: v2.67.0 or later
 - **AzureRM Provider**: v3.70.0 or later
 - **Azure Subscription**: Ensure the subscription ID is set as an environment variable.
-
----
 
 ## Usage
 
@@ -40,7 +35,6 @@ module "azure_vm" {
 ```
 
 ---
-
 ### Inputs
 
 | Name                  | Description                                  | Type   | Default       | Required |
@@ -78,16 +72,7 @@ module "azure_vm" {
    az login
    ```
 
----
-
-## License
-
-This module is open-source and available under the MIT License.
-
----
-
-
-# Azure Linux VM Sizes with Pricing (East US Region)
+## Azure Linux VM Sizes with Pricing (East US Region)
 
 For current sizes and pricing visit the [Azure Instances Size documentation](https://learn.microsoft.com/en-us/azure/virtual-machines/sizes/overview). Below are a few examples: 
 
@@ -122,5 +107,10 @@ For current sizes and pricing visit the [Azure Instances Size documentation](htt
 For the most accurate and up-to-date pricing, visit the [Azure Pricing Calculator](https://azure.microsoft.com/en-us/pricing/calculator/).
 
 
+## License
+
+This module is open-source and available under the MIT License.
+
 ---
+
 For questions or issues, feel free to open a GitHub issue or contact the maintainer.
